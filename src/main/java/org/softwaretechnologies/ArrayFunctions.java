@@ -3,6 +3,7 @@ package org.softwaretechnologies;
 public final class ArrayFunctions {
 
     private ArrayFunctions() {
+
     }
 
     /**
@@ -10,8 +11,17 @@ public final class ArrayFunctions {
      * @param array массив, который будет перевернут.
      */
     public static void reverse(int[] array) {
-        // TODO: реализуйте вышеуказанную функцию
+        int ln = array.length;
+        if (ln < 2) return;
+        ln--;
+        for (int i = 0; i < ln; ln--, i++ ){
+            int buf = array[i];
+            array[i] = array[ln];
+            array[ln] = buf;////////
+        }
     }
+        // TODO: реализуйте вышеуказанную функцию
+
 
     /**
      * Функция, заменяющая строки матрицы на столбцы матрицы. Пример:
@@ -25,5 +35,19 @@ public final class ArrayFunctions {
      */
     public static void rotateMatrix(int[][] matrix) {
         // TODO: реализуйте вышеуказанную функцию
+        int ln = matrix.length;
+        int h = matrix[0].length;
+        if ( ln != h) {
+            System.out.println("Матрица не квадратная");
+            return;
+        }
+        for (int i = 0; i < ln; i++) {
+            for (int j = i; j < h; j ++){
+                int buf = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = buf;
+            }
+        }
     }
-}
+    }
+
